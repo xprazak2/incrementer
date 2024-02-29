@@ -21,19 +21,19 @@ fn main() {
     // v1-9-5
 
     // Step by step
-    let mut version = VersionParser::parse("v2-5-6").unwrap()
-    println!("{}", version)
+    let mut version = VersionParser::parse("v2-5-6").unwrap();
+    println!("{}", version);
     // v2-5-6
 
-    println!("{}", version.semver())
+    println!("{}", version.semver());
     // 2.5.6
 
-    version.bump_patch()
+    version.bump_patch();
 
-    println!("{}", version)
+    println!("{}", version);
     // v2-5-7
 
-    println!("{}", version.semver())
+    println!("{}", version.semver());
     // 2.5.7
 }
 ```
