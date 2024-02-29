@@ -37,6 +37,15 @@ impl VersionParser {
         }
     }
 
+    /// Parse a version.
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use incrementer::version_parser::VersionParser;
+    ///
+    /// let version = VersionParser::parse("55.69.1-pre.5").unwrap();
+    /// ```
     pub fn parse(input: &str) -> ParseResult<Version> {
         let mut parser = Self::new();
 
@@ -171,6 +180,7 @@ impl VersionParser {
     }
 
     fn parse_suffix_state(&mut self, item: char) {
+        // handle invalid semver suffixes?
         self.suffix.push(item);
     }
 }

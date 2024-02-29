@@ -5,7 +5,7 @@ pub mod errors;
 mod separator;
 pub mod version;
 mod version_buff;
-mod version_parser;
+pub mod version_parser;
 
 /// Bump a patch version.
 ///
