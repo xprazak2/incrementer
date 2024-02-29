@@ -1,5 +1,7 @@
 use crate::errors::{ParseError, ParseResult};
 
+// enum would be better, but we would need to implement conversions, so const array is ok for now
+// since it is contained within a single small module and use is limited to a single method
 const MONTHS: [&str; 12] = [
     "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
 ];

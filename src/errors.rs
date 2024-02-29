@@ -11,8 +11,6 @@ pub enum ParseError {
     #[error("unsupported separator: `{0}`")]
     UnsupportedSeparator(char),
     #[error("error when parsing major version")]
-    MajorError,
-    #[error("error when parsing major version")]
     MinorError,
     #[error("error when parsing patch version")]
     PatchError,

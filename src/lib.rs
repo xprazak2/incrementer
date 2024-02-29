@@ -143,6 +143,9 @@ mod tests {
         assert_eq!(Err(ParseError::InvalidInput), bump_patch("."));
         assert_eq!(Err(ParseError::InvalidInput), bump_patch("-."));
         assert_eq!(Err(ParseError::InvalidInput), bump_patch("a."));
+        assert_eq!(Err(ParseError::MinorError), bump_patch("1.."));
+        assert_eq!(Err(ParseError::MinorError), bump_patch("1.."));
+        assert_eq!(Err(ParseError::PatchError), bump_patch("1.2.."));
         assert_eq!(
             Err(ParseError::UnsupportedSeparator('a')),
             bump_patch("a.1a.a")
@@ -152,6 +155,7 @@ mod tests {
     #[test]
     fn should_test_questionable_cases() {
         assert_eq!("2.1.1", bump_patch("2.1.").expect("should be ok"));
+        assert_eq!("---2.1.1", bump_patch("---2.1").expect("should be ok"));
         assert_eq!("2.1.2.4", bump_patch("2.1.1.4").expect("should be ok"));
         assert_eq!(
             "2023-Nov-3-v1",

@@ -44,6 +44,7 @@ impl VersionParser {
     }
 
     fn parse_inner(&mut self, input: &str) -> ParseResult<Version> {
+        // It might be useful to report a character position if an error happened
         for item in input.chars() {
             match self.state {
                 ParserState::Init => self.parse_init_state(item)?,
@@ -114,10 +115,6 @@ impl VersionParser {
         if item.is_numeric() {
             self.major.push(item);
             return Ok(());
-        }
-
-        if self.major.is_empty() {
-            return Err(ParseError::MajorError);
         }
 
         let sep = Separator::try_from(item)?;
